@@ -1,0 +1,59 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.1'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id 'org.graalvm.buildtools.native' version '0.9.28'
+
+//	id 'org.jetbrains.kotlin.jvm' version '1.6.21'
+//	id "com.github.johnrengelman.shadow" version "5.2.0"
+//	id "org.web3j" version "4.10.1"
+}
+
+group = 'com.cryptocat'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+	maven { url "https://hyperledger.jfrog.io/hyperledger/besu-maven" }
+	maven { url "https://artifacts.consensys.net/public/maven/maven/" }
+	maven { url "https://splunk.jfrog.io/splunk/ext-releases-local" }
+}
+
+ext {
+	web3jVersion = '4.10.1'
+	logbackVersion = '1.4.12'
+	klaxonVersion = '5.5'
+	besuPluginVersion = '23.4.0'
+}
+
+dependencies {
+	implementation "org.web3j:core:$web3jVersion",
+			"ch.qos.logback:logback-core:$logbackVersion",
+			"ch.qos.logback:logback-classic:$logbackVersion",
+			"com.beust:klaxon:$klaxonVersion"
+	implementation "org.web3j:web3j-unit:$web3jVersion"
+	implementation "org.web3j:web3j-evm:$web3jVersion"
+	implementation "org.hyperledger.besu:plugin-api:$besuPluginVersion"
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.kafka:spring-kafka'
+	implementation 'org.projectlombok:lombok:1.18.28'
+	testImplementation 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'org.postgresql:postgresql'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+	testImplementation 'org.testcontainers:junit-jupiter'
+	testImplementation 'org.testcontainers:postgresql'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
