@@ -7,7 +7,7 @@
 
             :test {:extra-paths [
                                  "components/block/test"
-                                 "basecomponents/blocks/cli/test"
+                                 "bases/cli/test"
                                  ]
 
                    :extra-deps {
