@@ -2,6 +2,6 @@
         poly/block {:local/root "../../components/block"}
         poly/cli {:local/root "../../bases/cli"}}
 
- :aliases {:test {:extra-paths []
+ :aliases {:test {:extra-paths ["test"]
                   :extra-deps  {}}
            :uberjar {:main com.analytics.cli.core}}}

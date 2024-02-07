@@ -3,3 +3,7 @@
 
 (defn hello [name]
   (core/hello name))
+
+
+(defn start-c [topic-name]
+  (core/start-c topic-name))

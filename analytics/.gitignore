@@ -38,3 +38,4 @@ projects/**/pom.xml
 # Calva VS Code Extension
 .calva
 .vscode
+.idea
